@@ -1,0 +1,64 @@
+{
+    "item": [
+		{
+            "name": "getRequestFolder",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "https://www.facebook.com/",
+                    "protocol": "https",
+                    "host": [
+                        "www",
+                        "facebook",
+                        "com"
+                    ],
+                    "path": [
+                        ""
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "getRequestFolder",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "https://www.facebook.com/",
+                    "protocol": "https",
+                    "host": [
+                        "www",
+                        "facebook",
+                        "com"
+                    ],
+                    "path": [
+                        ""
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "getRequestFolder",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "https://www.facebook.com/",
+                    "protocol": "https",
+                    "host": [
+                        "www",
+                        "facebook",
+                        "com"
+                    ],
+                    "path": [
+                        ""
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
+}

@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "6574592c-e5ec-4ef3-befd-f54aaace7cdc",
+		"name": "PostMan Api Coll",
+		"description": "This collection is to check various API of the go rest.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Viewing users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();",
+							"",
+							"pm.test(\"Request is successfull and status code 200\", function () {",
+							"    pm.expect(response.code).to.eql(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HomePage}}/{{users}}",
+					"host": [
+						"{{HomePage}}"
+					],
+					"path": [
+						"{{users}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const id = Math.floor((Math.random()*100 +1));",
+							"pm.environment.set(\"email\", \"roni\"+id+\"@gmail.com\");"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData = pm.response.json();",
+							"",
+							"pm.test(\"New user is created and status code 201\", function () {",
+							"    pm.expect(responseData.code).to.eql(201);",
+							"});",
+							"",
+							"pm.test(\"New user has the correct information\", function () {",
+							"    console.log(responseData);",
+							"    pm.expect(responseData.data.name).to.eql(\"Roni\");",
+							"    pm.expect(responseData.data.gender).to.eql(\"Male\");",
+							"    pm.expect(responseData.data.email).to.eql(pm.environment.get(\"email\"));",
+							"    pm.expect(responseData.data.status).to.eql(\"Active\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{API_KEY}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{API_KEY}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"email\": \"{{email}}\",\n\"name\" : \"Roni\",\n\"gender\": \"Male\",\n\"status\": \"Active\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HomePage}}/{{users}}",
+					"host": [
+						"{{HomePage}}"
+					],
+					"path": [
+						"{{users}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create posts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseData = pm.response.json();",
+							"console.log(responseData)",
+							"pm.test(\"Post is succesfully created with code is 201\", function () {",
+							"    pm.expect(responseData.code).eql(422);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{API_KEY}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{API_KEY}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"This is the title of the post\",\n    \"body\": \"This is the massege body\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HomePage}}/{{users}}/123/posts",
+					"host": [
+						"{{HomePage}}"
+					],
+					"path": [
+						"{{users}}",
+						"123",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{API_KEY}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
