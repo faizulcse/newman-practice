@@ -1,0 +1,20 @@
+{
+  "name": "newman-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test_api": "newman run mc_collection.postman_collection.json -n 2 --delay-request 500 -r cli,html",
+    "test_custom": "newman run custom.postman_collection.json --delay-request 500 -r cli,html",
+    "test": "newman run fb.postman_collection.json -n 2 --delay-request 500 -r cli,html",
+    "roni_test": "newman run runi.postman_collection.json -e roni_env.postman_environment.json -n 1 --delay-request 500 -r cli,html",
+    "test-runner": "newman run test-runner.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "newman": "^5.2.3",
+    "newman-reporter-html": "^1.0.5"
+  }
+}
