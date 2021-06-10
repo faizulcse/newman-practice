@@ -1,5 +1,5 @@
 node('master'){
-    def containerName="tc-${env.BUILD_NUMBER}"
+    def containerName="api-tc-${env.BUILD_NUMBER}"
     def reportsLocation = "/docker_tc_reports"
 
     stage("Checkout Repository") {
