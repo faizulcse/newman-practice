@@ -22,6 +22,7 @@ node('master'){
     }
 
     stage("Generate Test Reports") {
+        sh 'ls -al'
         sh 'mkdir '+"${env.WORKSPACE}"+reportsLocation
         sh './script/ci copyReportsToJenkins '+containerName+' '+reportsLocation
     }
