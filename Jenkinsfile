@@ -13,7 +13,7 @@ node('master'){
     stage("Run Tests") {
 
             def exitCode = sh script:'./script/ci testRun '+containerName, returnStatus:true
-
+        sh 'ls -al'
             // If any tests fail, Jenkins will exit with code 1,
             // which prevents the reporting script from running. Let's mark
             // the build as unstable instead.
@@ -22,8 +22,6 @@ node('master'){
     }
 
     stage("Generate Test Reports") {
-        sh 'cd ..'
-        sh 'ls -al'
         sh 'mkdir '+"${env.WORKSPACE}"+reportsLocation
         sh './script/ci copyReportsToJenkins '+containerName+' '+reportsLocation
     }
