@@ -22,7 +22,7 @@ These instructions will get you a copy of the project up and running on your loc
 npm install
 ```
 
-## Running the Tests on local Machine
+## Running the Tests in local Machine
 
 - Method 1: Invokes script named 'test_api' from package.json file.
   ```
@@ -38,8 +38,6 @@ npm install
   ```
 
 ## Running the Tests in Docker Container
-
-### Running Tests in Docker Container
 
 Build docker image with:
 
