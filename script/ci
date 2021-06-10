@@ -15,7 +15,7 @@ testRun() {
 }
 
 copyReportsToJenkins() {
-    sourceLocation=$1':/app/newman/.'
+    sourceLocation=$1':/newman/.'
     destinationLocation='.'$2
     docker cp $sourceLocation $destinationLocation
 }
