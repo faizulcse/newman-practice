@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+DOCKER_IMAGE="node-tc"
+
+ROOT="$(git rev-parse --show-toplevel)"
+
+imageBuild() {
+    docker build --tag ${DOCKER_IMAGE} --file "${ROOT}/Dockerfile" "${ROOT}"
+}
+
+testRun() {
+    docker run --name $1 ${DOCKER_IMAGE} run collections/roni.postman_collection.json -e environments/roni_env.postman_environment.json -n 1 --delay-request 500 -r cli,html
+}
+
+copyReportsToJenkins() {
+    sourceLocation=$1':/app/reports/.'
+    destinationLocation='.'$2
+    docker cp $sourceLocation $destinationLocation
+}
+
+removeContainer() {
+    docker rm $1
+}
+
+removeImage() {
+    docker rmi ${DOCKER_IMAGE} -f
+}
+"$@"

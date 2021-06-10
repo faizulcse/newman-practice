@@ -42,11 +42,11 @@ npm install
 Build docker image with:
 
 ```
-docker build --tag ${TAG NAME(mynewman:latest)} .
+docker build --tag ${TAG_NAME(mynewman:latest)} .
 ```
 
 Run the tests in the docker container:
 
 ```
-docker run -t ${TAG NAME(mynewman)} run collections/roni.postman_collection.json -e environments/roni_env.postman_environment.json -n 1 --delay-request 500 -r cli,html
+docker run -t ${DOCKER_IMAGE(mynewman)} run collections/roni.postman_collection.json -e environments/roni_env.postman_environment.json -n 1 --delay-request 500 -r cli,html
 ```
