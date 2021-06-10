@@ -1,0 +1,25 @@
+{
+	"info": {
+		"name": "mc_collection"
+	},
+	"item": [{
+		"name": "getRequest",
+		"request": {
+			"auth": {
+				"type": "noauth"
+			},
+			"method": "GET",
+			"header": [],
+			"url": {
+				"raw": "{{HomePage}}/{{users}}",
+				"host": [
+					"{{HomePage}}"
+				],
+				"path": [
+					"{{users}}"
+				]
+			}
+		},
+		"response": []
+	},{},{},{}]
+}

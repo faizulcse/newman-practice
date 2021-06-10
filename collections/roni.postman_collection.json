@@ -14,7 +14,6 @@
 					"script": {
 						"exec": [
 							"let response = pm.response.json();",
-							"",
 							"pm.test(\"Request is successfull and status code 200\", function () {",
 							"    pm.expect(response.code).to.eql(200);",
 							"});"
